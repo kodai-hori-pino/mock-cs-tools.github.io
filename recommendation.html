@@ -10,15 +10,39 @@
     <div class="container">
         <h1>推薦作成</h1>
         <form action="complete.html">
-            <label for="recommendation">推薦内容:</label><br>
-            <textarea id="recommendation" name="recommendation" rows="10" cols="80">
-@RA
-以下推薦対応お願いいたします。
-求職者ID：テスト 太郎 (10000)
-選考進捗ID：10000
-推薦企業名：テスト株式会社
-            </textarea><br>
+            <div style="margin-bottom: 1em;">
+                <div><strong>求職者ID：</strong><a href="#">テスト 太郎（10000）</a></div>
+                <div><strong>選考進捗ID：</strong><a href="#">10000</a></div>
+                <div><strong>推薦企業名：</strong><span id="company-name">テスト株式会社</span></div>
+            </div>
+            <label for="company-format">「<span id="company-label">テスト株式会社</span>」推薦フォーマット:</label><br>
+            <div id="required-fields" style="font-size: 0.95em; background: #f8f8f8; border: 1px solid #ddd; padding: 8px; margin-bottom: 8px; white-space: pre-line;"></div>
+            <textarea id="company-format" name="company-format" rows="10" cols="80"></textarea><br>
             <button type="submit">推薦する</button>
+            <button type="button" onclick="history.back();" style="margin-left: 1em; background: #ccc; color: #333; border: none; border-radius: 6px; padding: 0.6em 1.2em; font-size: 1em; font-weight: bold; cursor: pointer;">戻る</button>
+        <script>
+        // クエリパラメータ取得用関数
+        function getQueryParam(name) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name);
+        }
+        // companyパラメータがあれば表示に反映
+        window.onload = function() {
+            var company = getQueryParam('company');
+            if(company) {
+                document.getElementById('company-name').textContent = company;
+                document.getElementById('company-label').textContent = company;
+            }
+            var requiredFields = {
+                'テスト株式会社': `【必須項目の回答】\n\n・車通勤の可否（自家用車）：（可能／公共交通機関希望／どちらも可）\n・引っ越し予定：（あり。引っ越し予定先：／なし）\n・自宅最寄り駅（路線名/駅名）：\n・勤務開始可能日：\n・現在の年収：\n・希望年収：\n・応募書類はPDF形式である\n・ナイトワークの経験の有無について確認済み\n・AI面接およびその実施期限について確認済み\n・性別：（　男性　／　女性　）\n・現職中／離職中：（　現職中　／　離職中　）\n・転職理由：\n・求職者へのAI面接のメール通知、および選考タイムラインに投稿されたURLの共有について了解した`,
+                'デモ株式会社': `希望勤務地：\n※県単位でご記入をお願いいたします\n\n面接候補日：\n現年収：\n※離職中の方は前年収\n入社可能時期：`,
+                'サンプル株式会社': `希望勤務地：\n面接候補日時：第三希望まで\n・第一希望：\n・第二希望：\n・第三希望：`
+            };
+            var companyName = company || 'テスト株式会社';
+            var template = requiredFields[companyName] || requiredFields['テスト株式会社'];
+            document.getElementById('required-fields').textContent = template;
+        };
+        </script>
         </form>
     </div>
 </body>

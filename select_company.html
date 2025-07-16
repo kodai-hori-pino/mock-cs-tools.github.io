@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>推薦企業選択 - CA推薦プラットフォーム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>推薦企業の選択</h1>
+        <p style="margin-bottom:2em; color:#333;">該当求職者をどの企業に推薦しますか？</p>
+        <form action="recommendation.html" method="get" style="background:#f9f9f9; border:1px solid #e0e0e0; border-radius:10px; padding:2em 2em 1.5em 2em; max-width:400px; margin:0 auto 2em auto; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+            <label for="company" style="font-weight:bold; font-size:1.1em; color:#222;">企業を選択してください</label><br>
+            <select id="company" name="company" style="width:100%; padding:0.7em; margin:1em 0 1.5em 0; border-radius:6px; border:1px solid #ccc; font-size:1em; background:#fff;">
+                <option value="テスト株式会社">テスト株式会社</option>
+                <option value="サンプル株式会社">サンプル株式会社</option>
+                <option value="デモ株式会社">デモ株式会社</option>
+            </select>
+            <button type="submit" style="width:100%; background:#1976d2; color:#fff; border:none; border-radius:6px; padding:0.8em 0; font-size:1.1em; font-weight:bold; cursor:pointer; transition:background 0.2s;">推薦フォームへ進む</button>
+        </form>
+        <div style="text-align:center; margin-top:1em;">
+            <button type="button" onclick="history.back();" style="background: #ccc; color: #333; border: none; border-radius: 6px; padding: 0.6em 1.2em; font-size: 1em; font-weight: bold; cursor: pointer;">戻る</button>
+        </div>
+    </div>
+</body>
+</html>
